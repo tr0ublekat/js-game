@@ -10,13 +10,48 @@
             crossorigin="anonymous"
         />
         <title>Щищ</title>
+        <script src="js/main.js" defer type="module"></script>
+        <script src="js/fallingObjects.js" defer type="module"></script>
     </head>
 
     <body>
-        sdfd
+        <div
+            class="container"
+            id="container"
+            style="
+                width: 500px;
+                height: 800px;
+                margin-top: 20px;
+                position: relative;
+            "
+        >
+            <div id="falling-objects"></div>
+            <div id="player"></div>
+        </div>
     </body>
 </html>
 
-<script></script>
+<style>
+    div {
+        background-color: antiquewhite;
+    }
+    #player {
+        width: 40px;
+        height: 40px;
+        background-color: darkgray;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
 
-<style></style>
+    .falling-object {
+        border-radius: 50%;
+    }
+
+    #falling-objects {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+</style>
