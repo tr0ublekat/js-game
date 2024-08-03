@@ -8,5 +8,5 @@ document.addEventListener("DOMContentLoaded", function () {
     initPlayerMovement(player, container);
 
     const fallingObjectsManager = initFallingObjects(container);
-    fallingObjectsManager.start();
+    fallingObjectsManager.start(); // Запуск бесконечного создания падающих объектов
 });

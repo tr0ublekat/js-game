@@ -11,7 +11,6 @@
         />
         <title>Щищ</title>
         <script src="js/main.js" defer type="module"></script>
-        <script src="js/fallingObjects.js" defer type="module"></script>
     </head>
 
     <body>
@@ -25,6 +24,10 @@
                 position: relative;
             "
         >
+            <div id="score" style="z-index: 1;">Score: 0</div>
+            <div id="current-color" style="z-index: 1;">Color: Red</div>
+            <div id="timer" style="z-index: 1;">Time left: 5s</div>
+            <div id="game-over" style="display: none; z-index: 1;">Game Over</div>
             <div id="falling-objects"></div>
             <div id="player"></div>
         </div>
@@ -43,15 +46,32 @@
         bottom: 0;
         left: 0;
     }
-
     .falling-object {
-        border-radius: 50%;
+        border-radius: 50%; /* Сделает объекты круглыми */
     }
-
     #falling-objects {
         position: absolute;
         width: 100%;
         height: 100%;
-        overflow: hidden;
+        overflow: hidden; /* Скрывает объекты, выходящие за пределы контейнера */
+    }
+    #score, #current-color, #timer, #game-over {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 20px;
+    }
+    #current-color {
+        left: 150px;
+    }
+    #timer {
+        left: 300px;
+    }
+    #game-over {
+        top: 50px;
+        left: 150px;
+        font-size: 30px;
+        color: red;
+        background-color: aliceblue;
     }
 </style>
