@@ -1,4 +1,3 @@
-// score.js
 export function initScore() {
     const scoreElement = document.getElementById("score");
     let score = 0;

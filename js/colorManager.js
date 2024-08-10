@@ -1,33 +1,29 @@
-// colorManager.js
 export function initColorManager() {
     const currentColorElement = document.getElementById("current-color");
     const gameOverElement = document.getElementById("game-over");
     const timerElement = document.getElementById("timer");
-    const colors = ["red", "blue", "green", "yellow"];
+    const colors = ["red", "green"];
     let currentColor = colors[0]; // Начальный цвет
     let isGameOver = false;
     let timeLeft = 5; // Время до смены цвета в секундах
 
     function updateCurrentColor() {
-        if (isGameOver) return; // Не обновляем цвет, если игра окончена
-
         currentColor = colors[Math.floor(Math.random() * colors.length)];
-        currentColorElement.textContent = `Color: ${currentColor}`;
+        currentColorElement.style.backgroundColor = currentColor;
         timeLeft = 5; // Сбрасываем таймер
     }
 
-    function updateTimer() {
-        if (isGameOver) return; // Не обновляем таймер, если игра окончена
+    function updateTimerAndColor() {
+        if (isGameOver) return;
 
         timeLeft -= 1;
         if (timeLeft <= 0) {
             updateCurrentColor(); // Смена цвета по истечении времени
         }
-        timerElement.textContent = `Time left: ${timeLeft}s`;
+        timerElement.textContent = timeLeft; // Обновляем отображение таймера
     }
 
-    setInterval(updateTimer, 1000); // Обновляем таймер каждую секунду
-    setInterval(updateCurrentColor, 5000); // Обновляем текущий цвет каждые 5 секунд
+    setInterval(updateTimerAndColor, 1000); // Обновляем таймер каждую секунду и проверяем на смену цвета
 
     return {
         checkColor(fallingObject) {

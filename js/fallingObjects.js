@@ -7,11 +7,11 @@ export function initFallingObjects(container) {
     const scoreManager = initScore();
     const colorManager = initColorManager();
     const objectSize = 30; // Размер объектов
-    const fallSpeed = 2; // Скорость падения
+    const fallSpeed = 1.5; // Скорость падения
     let isGameOver = false;
 
     function createFallingObject() {
-        if (isGameOver) return; // Прекращаем создание объектов, если игра окончена
+        if (isGameOver) return;
 
         const fallingObject = document.createElement("div");
         fallingObject.className = "falling-object";
@@ -21,18 +21,16 @@ export function initFallingObjects(container) {
             "red",
             "blue",
             "green",
-            "yellow",
-        ][Math.floor(Math.random() * 4)]; // Случайный цвет объекта
+        ][Math.floor(Math.random() * 3)]; // Случайный цвет объекта
         fallingObject.style.position = "absolute";
-        fallingObject.style.left = `${
-            Math.random() * (container.clientWidth - objectSize)
-        }px`; // Случайная позиция по горизонтали
-        fallingObject.style.top = "0px"; // Начальная позиция сверху
-        fallingObject.style.transform = "translateY(0)"; // Начальная позиция с использованием transform
+        fallingObject.style.left = `${Math.random() * (container.clientWidth - objectSize)
+            }px`; // Случайная позиция по горизонтали
+        fallingObject.style.top = "0px";
+        fallingObject.style.transform = "translateY(0)";
         fallingObjectsContainer.appendChild(fallingObject);
 
         function updatePosition() {
-            if (isGameOver) return; // Останавливаем обновление позиции, если игра окончена
+            if (isGameOver) return;
 
             const rect = fallingObject.getBoundingClientRect();
             const containerRect = container.getBoundingClientRect();
@@ -49,7 +47,7 @@ export function initFallingObjects(container) {
                     scoreManager.increaseScore();
                     fallingObject.remove();
                 } else {
-                    isGameOver = true; // Игра окончена
+                    isGameOver = true;
                     document.getElementById("game-over").style.display =
                         "block"; // Показ сообщения Game Over
                     return;
@@ -61,10 +59,9 @@ export function initFallingObjects(container) {
                             .replace("translateY(", "")
                             .replace("px)", "")
                     ) || 0;
-                fallingObject.style.transform = `translateY(${
-                    currentTranslateY + fallSpeed
-                }px)`; // Падение объекта
-                requestAnimationFrame(updatePosition); // Продолжаем обновление позиции
+                fallingObject.style.transform = `translateY(${currentTranslateY + fallSpeed
+                    }px)`; // Падение объекта
+                requestAnimationFrame(updatePosition);
             } else {
                 fallingObject.remove(); // Удаление объекта, если он вышел из контейнера
             }
@@ -74,10 +71,7 @@ export function initFallingObjects(container) {
     }
 
     function startFallingObjects() {
-        setInterval(createFallingObject, 300); // Создаем объект каждую секунду
-
-        // Создаем первый объект немедленно, чтобы не ждать интервал
-        createFallingObject();
+        setInterval(createFallingObject, 500); // Создаем объект по таймеру в мс
     }
 
     return {
