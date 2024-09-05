@@ -5,7 +5,7 @@
 - A и D (влево и вправо).
 
 ## Запуск
-Рекомендуется запускать через Live Server (расширение для Visual Studio) файл index.html.
+Рекомендуется запускать через Live Server (расширение для Visual Studio Code) файл index.html.
 
 ![image](https://github.com/user-attachments/assets/a1c59dac-0148-4a5a-b139-fb5e59876744)
 
