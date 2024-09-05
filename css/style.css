@@ -1,4 +1,4 @@
-div {
+body {
     font-family: pixel_font;
 }
 
@@ -25,6 +25,9 @@ div {
 #game-over {
     position: absolute;
     font-size: 20px;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 #current-color {
